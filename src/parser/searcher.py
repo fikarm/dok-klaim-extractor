@@ -116,14 +116,18 @@ def multi_halaman(
     if start is None:
         return
 
+    pdf_page_start = pages[start].number
+    if pdf_page_start is None:
+        return
+
     # mencari halaman akhir
     end = text_search(pages[start:], kata_akhir, pola_akhir) if kata_akhir else None
     if end is None:
         end = start
-
-    pdf_page_start = pages[start].number
-    if pdf_page_start is None:
-        return
+    else:
+        # perlu ditambah index start
+        # karena array pages sudah di-slice sebelumnya
+        end = start + end
 
     pdf_page_end = pages[end].number
     if pdf_page_end is None:
