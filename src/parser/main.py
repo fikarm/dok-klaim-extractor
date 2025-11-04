@@ -7,9 +7,9 @@ import pymupdf
 import pandas as pd
 from pathlib import Path
 from datetime import datetime
-from src.schema import NamaBerkas
-from src.reader import DokumenKlaim
-from src.extractor import extractors
+from src.parser.schema import NamaBerkas
+from src.parser.reader import DokumenKlaim
+from src.parser.extractor import extractors
 
 
 INPUTS_DIR = Path("inputs")
@@ -88,11 +88,11 @@ def make_dataset():
     print(df.head())
 
 
-def main():
-    # ekstraksi_semua_berkas()
+def parse():
+    ekstraksi_semua_berkas()
 
     make_dataset()
 
 
 if __name__ == "__main__":
-    main()
+    parse()
